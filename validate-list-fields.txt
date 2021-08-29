@@ -1,0 +1,34 @@
+/* Validate List Fields */
+/* 23 is form-id, 104 is field-id */
+add_filter( 'gform_field_validation_23_104', 'validate_list_field', 10, 4 );
+add_filter( 'gform_field_validation_23_110', 'validate_list_field', 10, 4 );
+function validate_list_field( $result, $value, $form, $field ) {
+
+	foreach ($value as $row => $array) {
+		
+		/* Check Value for each field: Name, Phone Number, and Email */
+		foreach ($array as $key => $val) {
+            if ($val == '') {
+                $result['is_valid'] = false;
+                $result['message'] = "Please fill out all fields.<br>";
+            }
+        }       
+        
+        /* Validate Email */
+        if ( !empty( $array['Email']) && (!filter_var($array['Email'], FILTER_VALIDATE_EMAIL)) ) {        	
+            $result['is_valid'] = false;
+            $result['message'] .= "Email Address not valid: " . $array['Email'] . "<br>";            
+        }
+        
+        /* Validate Phone */
+        $valid_number = filter_var($array['Phone Number'],FILTER_SANITIZE_NUMBER_INT);         
+        if ( (strlen($valid_number) < 10) && (strlen($array['Phone Number']) > 0) ) {
+   
+        	$result['is_valid'] = false;
+            $result['message'] .= "Phone Number not valid: " . $array['Phone Number'] . "<br>";  
+		}
+		
+	}
+	
+	return $result;
+}
