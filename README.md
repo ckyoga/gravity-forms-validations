@@ -25,7 +25,7 @@ In this example form-id is 23 and field-id is 110.   Please update the function 
 Why Did I Write this Program?
 ------------------------------
 
-The Gravity Forms plugin does not provide error checking against every field in a list.  This basic program will validate a list field with Name, Email and Phone Number and provide an error message, if necessary.
+The Gravity Forms plugin does not provide error checking against every field in a list.  This basic function will validate a list field with Name, Email and Phone Number and provide an error message, if necessary.
 
 Author
 ------
