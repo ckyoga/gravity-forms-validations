@@ -1,4 +1,4 @@
-# gravity-forms-validations
+# Gravity Forms List Field Validations
 Program to validate multiple-field list fields in Wordpress/Gravity Forms : Name, Phone Number, Email Address
 
 
